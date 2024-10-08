@@ -21,6 +21,7 @@ workflow QC_1 {
         genome_size_est
         flattened_lr
         no_meta_fq
+        combined_lr
 
     main:
 
@@ -85,7 +86,7 @@ workflow QC_1 {
         if ( params.shortread == true ) {
             MERYL_COUNT ( shortreads, params.kmer_num ) }
         else if (params.ONT_lr == true && params.PacBioHifi_lr == true){
-            MERYL_COUNT ( shortreads, params.kmer_num )
+            MERYL_COUNT ( combined_lr, params.kmer_num )
         }
         else {
             MERYL_COUNT ( fastq_filt, params.kmer_num )
