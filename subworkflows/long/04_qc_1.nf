@@ -84,7 +84,7 @@ workflow QC_1 {
 
         if ( params.shortread == true ) {
             MERYL_COUNT ( shortreads, params.kmer_num ) }
-        else if (params.ONT_lr == true && params.PB_lr == true){
+        else if (params.ONT_lr == true && params.PacBioHifi_lr == true){
             MERYL_COUNT ( shortreads, params.kmer_num )
         }
         else {
