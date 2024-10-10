@@ -2,7 +2,9 @@ process VERKKO {
     tag "$meta.id"
     label 'process_high_memory', 'error_ignore'
 
-    container 'staphb/verkko'
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/verkko:2.2.1--h45dadce_0' :
+        'quay.io/biocontainers/verkko:2.2.1--h45dadce_0' }"
         
     input:
     tuple val(meta), path(pb)
